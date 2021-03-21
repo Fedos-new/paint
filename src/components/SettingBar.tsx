@@ -17,6 +17,8 @@ export const SettingBar = (props: PropsType) => {
                 defaultValue={1} min={1} max={50}
                 onChange={e => toolState.setLineWidth(e.target.value)}
             />50px
+            <label htmlFor="color-cover" style={{margin: '10px'}}>Цвет обводки</label>
+            <input id='color-cover' onChange={e => toolState.setStrokeColor(e.target.value)} type="color" style={{marginLeft: '16px',width: '30px'}}/>
         </div>
     );
 }

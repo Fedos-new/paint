@@ -43,8 +43,8 @@ export const Toolbar = (props: PropsType) => {
             <button className='toolBar__btn line' onClick={line}/>
             <button className='toolBar__btn eraser' onClick={eraser}/>
             <input onChange={e => changeColor(e.target.value)} type="color" style={{marginLeft: '16px',width: '30px'}}/>
-            <button className='toolBar__btn undo'/>
-            <button className='toolBar__btn redo'/>
+            <button className='toolBar__btn undo' onClick={()=> canvasState.undo()}/>
+            <button className='toolBar__btn redo' onClick={()=> canvasState.redo()}/>
             <button className='toolBar__btn save'/>
         </div>
     );

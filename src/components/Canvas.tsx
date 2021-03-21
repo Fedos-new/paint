@@ -17,10 +17,13 @@ export const Canvas = observer((props: PropsType) => {
         toolState.setTool(new Brush(canvasRef.current))
     },[])
 
+    const mouseHandler = () => {
+        canvasState.pushToUndo(canvasRef.current.toDataURL())
+    }
 
     return (
         <div className='canvas'>
-            <canvas ref={canvasRef} width={600} height={400}/>
+            <canvas onMouseDown={() => mouseHandler()}  ref={canvasRef} width={600} height={400}/>
         </div>
     );
 })

@@ -3,6 +3,7 @@ import Brush from "../tools/Brush";
 import Rect from "../tools/Rect";
 import Circle from "../tools/Circle";
 import Eraser from "../tools/Eraser";
+import Line from "../tools/Line";
 
 class ToolState {
     tool: ToolType = null
@@ -28,4 +29,4 @@ class ToolState {
 
 export default new ToolState()
 
-type ToolType = Brush | Rect | Circle| Eraser | null
+type ToolType = Brush | Rect | Circle| Eraser | Line | null
