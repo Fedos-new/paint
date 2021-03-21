@@ -5,14 +5,14 @@ import {SettingBar} from "./components/SettingBar";
 import {Canvas} from "./components/Canvas";
 
 function App() {
-  return (
-    <div className="app">
-      <Toolbar/>
-      <SettingBar/>
-      <Canvas/>
+    return (
+        <div className="app">
+            <Toolbar/>
+            <SettingBar/>
+            <Canvas/>
 
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
