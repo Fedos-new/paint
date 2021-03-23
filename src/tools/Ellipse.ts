@@ -1,7 +1,6 @@
 import Tool from "./Tool";
 
-
-export default class Rect extends Tool {
+export default class Ellipse extends Tool {
     mouseDown: boolean | undefined
     startX: number = 0
     startY: number = 0
@@ -36,11 +35,13 @@ export default class Rect extends Tool {
             let currentY = e.pageY - (e.target as any).offsetTop
             let width = currentX - this.startX
             let height = currentY - this.startY
-            this.draw(this.startX, this.startY, width, height)
+            let rX = Math.sqrt(width**2 )
+            let rY = Math.sqrt(height**2)
+            this.draw(this.startX, this.startY, rX,rY)
         }
     }
 
-    draw(x: number, y: number, w: number, h: number) {
+    draw(x: number, y: number, rX: number, rY:number) {
         const img = new Image()
         if (this.saved != null) {
             img.src = this.saved
@@ -49,7 +50,7 @@ export default class Rect extends Tool {
             this.ctx.clearRect(0, 0, this.canvas.width,  this.canvas.height)
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
             this.ctx.beginPath()
-            this.ctx.rect(x, y, w, h)
+            this.ctx.ellipse(x, y, rX,  rY, Math.PI , 0, 2 * Math.PI);
             this.ctx.stroke()
         }
     }

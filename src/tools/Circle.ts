@@ -43,7 +43,6 @@ export default class Circle extends Tool {
 
     draw(x: number, y: number, r: number) {
         const img = new Image()
-        debugger
         if (this.saved != null) {
             img.src = this.saved
         }
@@ -52,7 +51,6 @@ export default class Circle extends Tool {
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
             this.ctx.beginPath()
             this.ctx.arc(x, y, r, 0,2*Math.PI, false)
-            this.ctx.fill()
             this.ctx.stroke()
         }
     }

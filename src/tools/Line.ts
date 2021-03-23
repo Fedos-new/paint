@@ -43,11 +43,11 @@ export default class Line extends Tool {
             img.src = this.saved
         }
         img.onload = () => {
-            this.ctx.clearRect(0, 0, this.canvas.width,  this.canvas.height)
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
             this.ctx.beginPath()
             if (this.currentX != null && this.currentY != null) {
-                    this.ctx.moveTo(this.currentX, this.currentY)
+                this.ctx.moveTo(this.currentX, this.currentY)
             }
             this.ctx.lineTo(x, y)
             this.ctx.fill()

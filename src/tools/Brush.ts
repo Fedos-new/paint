@@ -18,7 +18,6 @@ export default class Brush extends Tool{
         this.mouseDown = false
     }
     mouseDownHandler(e:MouseEvent) {
-        debugger
         this.mouseDown = true
         this.ctx.beginPath()
         this.ctx.moveTo(e.pageX - (e.target as any).offsetLeft, e.pageY - (e.target as any).offsetTop)
@@ -31,9 +30,7 @@ export default class Brush extends Tool{
 
     draw(x:number,y:number) {
         this.ctx.lineTo(x,y)
-        console.log(x,y)
-        this.ctx.strokeStyle = ''
+        // this.ctx.strokeStyle = ''
         this.ctx.stroke()
-        console.log('draw brush')
     }
 }

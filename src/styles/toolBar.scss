@@ -2,67 +2,151 @@
 
 .toolBar {
   height: $toolbar-height;
-  background-color: white;
+  background-color: $toolbar-color;
   display: flex;
   align-items: center;
-  position: absolute;
+  justify-content: center;
+  position: relative;
   width: 100%;
-  box-shadow: 0 4px 5px gray;
+  //box-shadow: 0 1px 2px #383838;
   z-index: 10;
 
-  &__btn {
-    height: 25px;
-    width: 25px;
+  .btn {
+    height: 30px;
+    width: 30px;
     border: none;
     cursor: pointer;
     background-size: cover;
     margin-left: 16px;
-  }
+    outline: none;
 
-  .brush {
-    background: url("../assets/img/brush.png") no-repeat center center;
-  }
+    &:hover {
+      background-color: #454545;
+      border: 1px solid #666666;
+    }
 
-  .rect {
-    background: url("../assets/img/rect.png") no-repeat center center;
-  }
+    .active {
+      background-color: #383838;
+      border: 1px solid #636363;
+    }
 
-  .circle {
-    background: url("../assets/img/circle.png") no-repeat center center;
-  }
-
-  .eraser {
-    background: url("../assets/img/eraser.png") no-repeat center center;
-  }
-
-  .line {
-    background: url("../assets/img/line.png") no-repeat center center;
+    .icon {
+      height: 20px;
+      width: 20px;
+      fill: #dddddd;
+      cursor: pointer;
+      vertical-align: middle;
+    }
   }
 
   .undo {
-    background: url("../assets/img/undo.png") no-repeat center center;
     margin-left: auto;
   }
 
-  .redo {
-    background: url("../assets/img/redo.png") no-repeat center center;
-  }
-
   .save {
-    background: url("../assets/img/save.png") no-repeat center center;
     margin-right: 16px;
   }
 
-
+  .selectTool {
+    background-color: #383838;
+    border: 1px solid #636363;
+  }
 }
 
 .settingBar {
   height: $toolbar-height;
-  background-color: white;
+  background-color: $toolbar-color;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   width: 100%;
-  box-shadow: 0 4px 5px gray;
+  box-shadow: 0 1px 5px #383838;
   top: $toolbar-height;
+  color: #f0f0f0;
+  font-family: sans-serif;
+  font-size: 16px;
+
+
+  .input-range {
+    /*-webkit-appearance: none; !* убрать вид, который задан браузером по умолчанию *!*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 120px;
+    height: 10px;
+    border-radius: 3px;
+    background: #eeeeee;
+    outline: none;
+    margin-left: 40px;
+  }
+
+  .input-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 2px solid #FFFFFF;
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: #636363;
+    cursor: pointer;
+    margin-top: -4px;
+  }
+
+  /* Тоже самое для Firefox */
+  .input-range::-moz-range-thumb {
+    border: 1px solid #dddddd;
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+
+  /* Тоже самое для IE */
+  .input-range::-ms-thumb {
+    height: 20px;
+    width: 12px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+
+  .input-range::-webkit-slider-thumb:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 9px #ffffff;
+  }
+
+  .input-range::-webkit-slider-runnable-track {
+    background-color: #282828;
+    background-image: linear-gradient(326deg, #9c9c9c 0%, #dddddd 64%);
+    height: 10px;
+    border-radius: 3px;
+  }
+
+
+  .color-cover {
+    margin-left: 16px;
+  }
+
+  .line-width {
+    margin: 10px;
+    position: relative;
+  }
+
+  .line-width-value {
+    position: absolute;
+    margin-left: 136px;
+  }
+}
+
+.input-color {
+  margin-left: 16px;
+  width: 30px;
+}
+
+.container {
+  width: 80%;
+  display: flex;
+  align-items: center;
 }

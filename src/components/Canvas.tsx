@@ -23,7 +23,7 @@ export const Canvas = observer((props: PropsType) => {
 
     return (
         <div className='canvas'>
-            <canvas onMouseDown={() => mouseHandler()}  ref={canvasRef} width={600} height={400}/>
+            <canvas onMouseDown={() => mouseHandler()}  ref={canvasRef} width={800} height={600} style={{cursor:'crosshair'}}/>
         </div>
     );
 })

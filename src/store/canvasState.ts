@@ -16,12 +16,11 @@ class CanvasState {
     pushToUndo(data: any) {
         this.undoList.push(data)
 
-
     }
 
-    pushToRedo(data: any) {
-        this.redoList.push(data)
-    }
+    // pushToRedo(data: any) {
+    //     this.redoList.push(data)
+    // }
 
     undo() {
         if (this.canvas) {
@@ -29,7 +28,8 @@ class CanvasState {
 
             if (this.undoList.length > 0) {
                 let dataUrl = this.undoList.pop()
-                this.redoList.push(dataUrl) //  для возврата отменны
+                this.redoList.push(this.canvas.toDataURL()) //  для возврата отменны
+                console.log(this.redoList)
                 let img = new Image()
                 img.src = dataUrl
                 img.onload = () => {
@@ -49,7 +49,7 @@ class CanvasState {
             let ctx = this.canvas.getContext('2d')
             if (this.redoList.length > 0) {
                 let dataUrl = this.redoList.pop()
-                this.undoList.push(this.canvas.toDataURL()) // добавляем текущее состояние canvas для отменны возврата
+                this.undoList.push(this.canvas.toDataURL()) // добавляем текущее состояние canvas для повтора отменны действия
                 let img = new Image()
                 img.src = dataUrl
                 img.onload = () => {
@@ -64,3 +64,4 @@ class CanvasState {
 }
 
 export default new CanvasState()
+
