@@ -1,10 +1,10 @@
 import React, {ChangeEvent, useState} from 'react';
-import '../styles/toolBar.scss'
-import toolState from "../store/toolState";
+import '../../styles/toolBar.scss'
+import toolState from "../../store/toolState";
 
-type PropsType = {};
 
-export const SettingBar = (props: PropsType) => {
+
+export const SettingBar = () => {
 
     const [value, setValue] = useState(1);
 

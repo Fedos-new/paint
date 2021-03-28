@@ -53,5 +53,6 @@ export default class Rect extends Tool {
             this.ctx.stroke()
         }
     }
+
 }
 

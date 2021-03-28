@@ -4,16 +4,19 @@ import Rect from "../tools/Rect";
 import Circle from "../tools/Circle";
 import Eraser from "../tools/Eraser";
 import Line from "../tools/Line";
+import Ellipse from "../tools/Ellipse";
+import EllipseFill from "../tools/EllipseFill";
+import CircleFill from "../tools/CircleFill";
+import RectFill from "../tools/RectFill";
 
 class ToolState {
-    tool: ToolType = null
-    isActive: boolean = false
+    tool: ToolStateType = null
 
     constructor() {
         makeAutoObservable(this)
     }
 
-    setTool(tool: ToolType) {
+    setTool(tool: ToolStateType) {
         this.tool = tool
     }
     setFillColor(color: string) {
@@ -27,13 +30,10 @@ class ToolState {
         if(this.tool != null) this.tool.lineWidth = width
     }
 
-    setActive(isActive: boolean) {
-        this.isActive = isActive
-        console.log(this.isActive)
-    }
-
 }
 
 export default new ToolState()
 
-type ToolType = Brush | Rect | Circle| Eraser | Line | null
+export type ToolStateType =
+    Brush | Rect | Circle | Eraser | Line
+    | Ellipse | EllipseFill | RectFill| CircleFill | null

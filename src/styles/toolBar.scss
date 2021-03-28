@@ -23,6 +23,7 @@
     &:hover {
       background-color: #454545;
       border: 1px solid #666666;
+      border-radius: 4px;
     }
 
     .active {
@@ -50,6 +51,7 @@
   .selectTool {
     background-color: #383838;
     border: 1px solid #636363;
+    border-radius: 4px;
   }
 }
 
@@ -147,6 +149,10 @@
 
 .container {
   width: 80%;
+  display: flex;
+  align-items: center;
+}
+.leftTool {
   display: flex;
   align-items: center;
 }

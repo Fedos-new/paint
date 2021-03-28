@@ -2,6 +2,7 @@ import Rect from "./Rect";
 
 
 export default class RectFill extends Rect {
+
     constructor(canvas: HTMLCanvasElement | null) {
         super(canvas)
         this.listen()

@@ -22,5 +22,6 @@ export default class CircleFill extends Circle {
             this.ctx.stroke()
         }
     }
+
 }
 

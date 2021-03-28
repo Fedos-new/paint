@@ -7,6 +7,7 @@ export default class Line extends Tool {
     currentY: number | undefined
     saved: string | undefined
 
+
     constructor(canvas: HTMLCanvasElement | null) {
         super(canvas)
         this.listen()

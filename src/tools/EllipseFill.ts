@@ -22,5 +22,6 @@ export default class EllipseFill extends Ellipse {
             this.ctx.stroke()
         }
     }
+
 }
 

@@ -54,5 +54,6 @@ export default class Ellipse extends Tool {
             this.ctx.stroke()
         }
     }
+
 }
 
