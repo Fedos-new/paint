@@ -2,7 +2,7 @@ import Ellipse from "./Ellipse";
 
 export default class EllipseFill extends Ellipse {
 
-    constructor(canvas: HTMLCanvasElement | null) {
+    constructor(canvas: HTMLCanvasElement) {
         super(canvas)
         this.listen()
     }

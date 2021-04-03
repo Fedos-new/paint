@@ -41,8 +41,7 @@ export const ToolbarContainer = () => {
 
     const [toolBarButtons, setToolBarButtons] = useState<DataToolBarType>(dataToolBarLeft)
 
-
-    function selectButton(id: number) {
+    const  selectButton = (id: number) => {
         const nextState = toolBarButtons.map(button => {
             button.select = false
             if (button.id === id) {
@@ -50,14 +49,12 @@ export const ToolbarContainer = () => {
             }
             return button;
         });
-        setToolBarButtons(dataToolBarLeft)
         setToolBarButtons(nextState);
     }
 
     const drawFigure = (figure: Figure, id: number) => {
-        toolState.setTool(new figure(canvasState.canvas))
+        toolState.setTool(new figure(canvasState.canvas as HTMLCanvasElement))
         selectButton(id)
-        console.log(figure)
     }
 
     const changeColor = (e: string) => {
@@ -65,14 +62,27 @@ export const ToolbarContainer = () => {
         toolState.setStrokeColor(e)
     }
 
+    const undo = () => {
+        canvasState.undo()
+        console.log(canvasState.undo);
+    }
+    const redo = () => {
+        canvasState.redo()
+
+    }
+    const save = () => {
+        canvasState.undo()
+    }
+
+    console.log('RENDER')
     return (
         <Toolbar
             toolBarButtons={toolBarButtons}
             drawFigure={drawFigure}
             changeColor={changeColor}
-            undo={canvasState.undo()}
-            redo={canvasState.redo()}
-            save={canvasState.undo()}
+            undo={undo}
+            redo={redo}
+            save={save}
         />
     );
 }

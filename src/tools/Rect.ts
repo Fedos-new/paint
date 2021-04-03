@@ -7,7 +7,7 @@ export default class Rect extends Tool {
     startY: number = 0
     saved: string | undefined
 
-    constructor(canvas: HTMLCanvasElement | null) {
+    constructor(canvas: HTMLCanvasElement) {
         super(canvas)
         this.listen()
     }
@@ -25,15 +25,15 @@ export default class Rect extends Tool {
     mouseDownHandler(e: MouseEvent) {
         this.mouseDown = true
         this.ctx.beginPath()
-        this.startX = e.pageX - (e.target as any).offsetLeft
-        this.startY = e.pageY - (e.target as any).offsetTop
+        this.startX = e.pageX - (e.target as HTMLElement).offsetLeft
+        this.startY = e.pageY - (e.target as HTMLElement).offsetTop
         this.saved = this.canvas.toDataURL()
     }
 
     mouseMoveHandler(e: MouseEvent) {
         if (this.mouseDown) {
-            let currentX = e.pageX - (e.target as any).offsetLeft
-            let currentY = e.pageY - (e.target as any).offsetTop
+            let currentX = e.pageX - (e.target as HTMLElement).offsetLeft
+            let currentY = e.pageY - (e.target as HTMLElement).offsetTop
             let width = currentX - this.startX
             let height = currentY - this.startY
             this.draw(this.startX, this.startY, width, height)
@@ -42,11 +42,9 @@ export default class Rect extends Tool {
 
     draw(x: number, y: number, w: number, h: number) {
         const img = new Image()
-        if (this.saved != null) {
-            img.src = this.saved
-        }
+        img.src = this.saved as string
         img.onload = () => {
-            this.ctx.clearRect(0, 0, this.canvas.width,  this.canvas.height)
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height)
             this.ctx.beginPath()
             this.ctx.rect(x, y, w, h)

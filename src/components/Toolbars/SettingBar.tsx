@@ -3,7 +3,6 @@ import '../../styles/toolBar.scss'
 import toolState from "../../store/toolState";
 
 
-
 export const SettingBar = () => {
 
     const [value, setValue] = useState(1);

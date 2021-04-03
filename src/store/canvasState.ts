@@ -2,8 +2,8 @@ import {makeAutoObservable} from "mobx";
 
 class CanvasState {
     canvas: HTMLCanvasElement | null = null
-    undoList: any[] = []
-    redoList: any[] = []
+    undoList: string[] = []
+    redoList: string[] = []
 
     constructor() {
         makeAutoObservable(this)
@@ -13,25 +13,18 @@ class CanvasState {
         this.canvas = canvas
     }
 
-    pushToUndo(data: any) {
+    pushToUndo(data: string) {
         this.undoList.push(data)
-
     }
-
-    // pushToRedo(data: any) {
-    //     this.redoList.push(data)
-    // }
 
     undo() {
         if (this.canvas) {
             let ctx = this.canvas.getContext('2d')
-
             if (this.undoList.length > 0) {
                 let dataUrl = this.undoList.pop()
                 this.redoList.push(this.canvas.toDataURL()) //  для возврата отменны
-                console.log(this.redoList)
                 let img = new Image()
-                img.src = dataUrl
+                img.src = dataUrl as string
                 img.onload = () => {
                     if (ctx && this.canvas) {
                         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -39,7 +32,7 @@ class CanvasState {
                     }
                 }
             } else {
-                if (ctx) ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+                ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height)
             }
         }
     }
@@ -51,7 +44,7 @@ class CanvasState {
                 let dataUrl = this.redoList.pop()
                 this.undoList.push(this.canvas.toDataURL()) // добавляем текущее состояние canvas для повтора отменны действия
                 let img = new Image()
-                img.src = dataUrl
+                img.src = dataUrl as string
                 img.onload = () => {
                     if (ctx && this.canvas) {
                         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)

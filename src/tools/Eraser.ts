@@ -2,7 +2,7 @@ import Brush from "./Brush";
 
 
 export default class Eraser extends Brush{
-    constructor(canvas: HTMLCanvasElement | null) {
+    constructor(canvas: HTMLCanvasElement) {
         super(canvas)
     }
 

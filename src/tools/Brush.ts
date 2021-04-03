@@ -1,9 +1,10 @@
 import Tool from "./Tool";
 
 
-export default class Brush extends Tool{
+export default class Brush extends Tool {
     mouseDown: boolean | undefined
-    constructor(canvas: HTMLCanvasElement | null) {
+
+    constructor(canvas: HTMLCanvasElement) {
         super(canvas)
         this.listen()
     }
@@ -17,23 +18,25 @@ export default class Brush extends Tool{
     mouseUpHandler() {
         this.mouseDown = false
     }
-    mouseDownHandler(e:MouseEvent) {
+
+    mouseDownHandler(e: MouseEvent) {
         this.mouseDown = true
         this.ctx.beginPath()
-        this.ctx.moveTo(e.pageX - (e.target as any).offsetLeft, e.pageY - (e.target as any).offsetTop)
-
+        this.ctx.moveTo(e.pageX - (e.target as HTMLElement).offsetLeft,
+            e.pageY - (e.target as HTMLElement).offsetTop)
 
     }
-    mouseMoveHandler(e:MouseEvent) {
-        if(this.mouseDown) {
-            this.draw(e.pageX - (e.target as any).offsetLeft, e.pageY - (e.target as any).offsetTop)
+
+    mouseMoveHandler(e: MouseEvent) {
+        if (this.mouseDown) {
+            this.draw(e.pageX - (e.target as HTMLElement).offsetLeft,
+                e.pageY - (e.target as HTMLElement).offsetTop)
         }
     }
 
 
-    draw(x:number,y:number) {
-        this.ctx.lineTo(x,y)
-        // this.ctx.strokeStyle = ''
+    draw(x: number, y: number) {
+        this.ctx.lineTo(x, y)
         this.ctx.stroke()
     }
 }

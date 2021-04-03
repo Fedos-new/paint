@@ -6,24 +6,25 @@ import toolState from "../store/toolState";
 import Brush from "../tools/Brush";
 
 
-type PropsType = {};
+export const Canvas = observer(() => {
 
-export const Canvas = observer((props: PropsType) => {
-
-    const canvasRef:any = useRef()
+    const canvasRef: React.MutableRefObject<HTMLCanvasElement | null> = useRef<HTMLCanvasElement | null>(null)
 
     useEffect(() => {
         canvasState.setCanvas(canvasRef.current)
-        toolState.setTool(new Brush(canvasRef.current))
-    },[])
+        toolState.setTool(new Brush(canvasRef.current as HTMLCanvasElement))
+    }, [])
 
     const mouseHandler = () => {
-        canvasState.pushToUndo(canvasRef.current.toDataURL())
+        if (canvasRef.current != null) {
+            canvasState.pushToUndo(canvasRef.current.toDataURL())
+        }
     }
 
     return (
         <div className='canvas'>
-            <canvas onMouseDown={() => mouseHandler()}  ref={canvasRef} width={800} height={600} style={{cursor:'crosshair'}}/>
+            <canvas onMouseDown={() => mouseHandler()} ref={canvasRef} width={800} height={600}
+                    style={{cursor: 'crosshair'}}/>
         </div>
     );
 })
